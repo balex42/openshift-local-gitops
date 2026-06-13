@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/YOUR_USERNAME/openshift-local-gitops  # replace with your repo URL
+    repoURL: git@github.com:balex42/openshift-local-gitops.git
     targetRevision: HEAD
     path: clusters/local
   destination:
