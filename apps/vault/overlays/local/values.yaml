@@ -2,6 +2,9 @@ global:
   openshift: true
 
 server:
+  image:
+    repository: docker.io/hashicorp/vault
+    tag: "1.18.1"
   dev:
     enabled: true
 
