@@ -13,7 +13,7 @@ spec:
     path: apps/gitops-operator/overlays/local
   destination:
     server: https://kubernetes.default.svc
-    namespace: openshift-gitops
+    namespace: openshift-gitops-operator
   syncPolicy:
     automated:
       prune: true
