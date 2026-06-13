@@ -27,6 +27,12 @@ spec:
         - /spec/notifications
         - /spec/prometheus
         - /spec/tls
+        - /spec/applicationSet/webhookServer
+        - /spec/controller/processors
+        - /spec/controller/sharding
+        - /spec/server/grpc
+        - /spec/server/ingress
+        - /spec/server/service
   syncPolicy:
     automated:
       prune: true
