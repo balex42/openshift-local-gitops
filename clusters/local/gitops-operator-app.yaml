@@ -14,6 +14,19 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: openshift-gitops-operator
+  ignoreDifferences:
+    - group: argoproj.io
+      kind: ArgoCD
+      jsonPointers:
+        - /spec/grafana
+        - /spec/ha
+        - /spec/imageUpdater
+        - /spec/initialSSHKnownHosts
+        - /spec/monitoring
+        - /spec/networkPolicy
+        - /spec/notifications
+        - /spec/prometheus
+        - /spec/tls
   syncPolicy:
     automated:
       prune: true
