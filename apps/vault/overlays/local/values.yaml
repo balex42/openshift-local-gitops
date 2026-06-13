@@ -1,0 +1,10 @@
+global:
+  openshift: true
+
+server:
+  dev:
+    enabled: true
+
+# Vault agent injector conflicts with ESO; disable it
+injector:
+  enabled: false

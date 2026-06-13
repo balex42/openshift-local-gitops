@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  name: openshift-gitops
+  namespace: openshift-gitops
+spec:
+  # Required to allow kustomize to render Helm charts (used by the vault app)
+  kustomizeBuildOptions: "--enable-helm"
+  server:
+    autoscale:
+      enabled: false
+    route:
+      enabled: true
+  rbac:
+    defaultPolicy: "role:readonly"
+    policy: |
+      g, system:cluster-admins, role:admin
+      g, cluster-admins, role:admin
+    scopes: "[groups]"
