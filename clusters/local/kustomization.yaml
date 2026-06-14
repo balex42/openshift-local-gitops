@@ -4,3 +4,4 @@ resources:
   - gitops-operator-app.yaml
   - vault-app.yaml
   - eso-app.yaml
+  - openshift-ai-app.yaml
