@@ -8,9 +8,9 @@ metadata:
 spec:
   project: platform
   sources:
-    - repoURL: https://redhat-developer.github.io/redhat-helm-charts/
+    - repoURL: https://redhat-developer.github.io/redhat-helm-charts
       chart: ibm-operator-catalog-enablement
-      targetRevision: 1.2.2
+      targetRevision: 1.1.0
       helm:
         valueFiles:
           - $values/apps/ibm-operator-catalog/values.yaml
