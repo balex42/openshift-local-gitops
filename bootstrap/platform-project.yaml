@@ -22,6 +22,8 @@ spec:
       namespace: vault
     - server: https://kubernetes.default.svc
       namespace: ibm-operator-catalog
+    - server: https://kubernetes.default.svc
+      namespace: openshift-marketplace
 
   clusterResourceWhitelist:
     - group: ""
