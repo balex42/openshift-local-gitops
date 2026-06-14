@@ -7,6 +7,10 @@ server:
     tag: "1.18.1"
   dev:
     enabled: true
+  route:
+    enabled: true
+    tls:
+      termination: edge
 
 # Vault agent injector conflicts with ESO; disable it
 injector:
