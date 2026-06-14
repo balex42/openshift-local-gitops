@@ -14,6 +14,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: openshift-gitops
+  resourceTrackingMethod: annotation+label
   syncPolicy:
     automated:
       prune: true
