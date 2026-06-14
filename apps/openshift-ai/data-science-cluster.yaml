@@ -1,0 +1,41 @@
+apiVersion: datasciencecluster.opendatahub.io/v1
+kind: DataScienceCluster
+metadata:
+  name: default-dsc
+  labels:
+    app.kubernetes.io/name: datasciencecluster
+    app.kubernetes.io/instance: default-dsc
+    app.kubernetes.io/part-of: rhods-operator
+    app.kubernetes.io/managed-by: kustomize
+spec:
+  components:
+    dashboard:
+      managementState: Managed
+    workbenches:
+      workbenchNamespace: rhods-notebooks
+      managementState: Managed
+    datasciencepipelines:
+      managementState: Managed
+    kueue:
+      managementState: Managed
+    ray:
+      managementState: Managed
+    codeflare:
+      managementState: Managed
+    modelmeshserving:
+      managementState: Managed
+    # kserve requires Knative Serving (OpenShift Serverless) — too heavy for local
+    kserve:
+      managementState: Removed
+    # NIM requires GPU
+    # modelregistry, trainingoperator, trustyai: enable when needed
+    modelregistry:
+      managementState: Removed
+    trainingoperator:
+      managementState: Removed
+    trustyai:
+      managementState: Removed
+    feastoperator:
+      managementState: Removed
+    llamastackoperator:
+      managementState: Removed
