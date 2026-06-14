@@ -1,72 +1,11 @@
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: openshift-gitops-argocd-application-controller
-rules:
-  # Namespace lifecycle — CreateNamespace=true sync option
-  - apiGroups: [""]
-    resources: ["namespaces"]
-    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-
-  # OLM — manage Subscriptions for gitops-operator and ESO
-  - apiGroups: ["operators.coreos.com"]
-    resources: ["subscriptions", "operatorgroups", "clusterserviceversions", "installplans"]
-    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-
-  # Cluster-scoped RBAC — Vault Helm chart creates vault-server-binding (system:auth-delegator)
-  - apiGroups: ["rbac.authorization.k8s.io"]
-    resources: ["clusterroles", "clusterrolebindings"]
-    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-
-  # ArgoCD Application CRs — App-of-Apps pattern
-  - apiGroups: ["argoproj.io"]
-    resources: ["applications", "applicationsets", "appprojects"]
-    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-
-  # Core workload resources across managed namespaces
-  - apiGroups: [""]
-    resources: ["serviceaccounts", "services", "configmaps", "secrets",
-                "persistentvolumeclaims", "pods", "endpoints", "events"]
-    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-
-  # Workload controllers
-  - apiGroups: ["apps"]
-    resources: ["deployments", "statefulsets", "daemonsets", "replicasets"]
-    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-
-  # OpenShift routes
-  - apiGroups: ["route.openshift.io"]
-    resources: ["routes", "routes/custom-host"]
-    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-
-  # Pod disruption budgets — Vault HA
-  - apiGroups: ["policy"]
-    resources: ["poddisruptionbudgets"]
-    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-
-  # Network policies
-  - apiGroups: ["networking.k8s.io"]
-    resources: ["networkpolicies", "ingresses"]
-    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-
-  # Batch workloads
-  - apiGroups: ["batch"]
-    resources: ["jobs", "cronjobs"]
-    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-
-  # StorageClass — read-only, apps reference but don't manage storage classes
-  - apiGroups: ["storage.k8s.io"]
-    resources: ["storageclasses"]
-    verbs: ["get", "list", "watch"]
----
-apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: openshift-gitops-argocd-application-controller
+  name: openshift-gitops-argocd-application-controller-cluster-admin
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: openshift-gitops-argocd-application-controller
+  name: cluster-admin
 subjects:
   - kind: ServiceAccount
     name: openshift-gitops-argocd-application-controller
