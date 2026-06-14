@@ -9,6 +9,7 @@ spec:
   sourceRepos:
     - git@github.com:balex42/openshift-local-gitops.git
     - https://helm.releases.hashicorp.com
+    - https://redhat-developer.github.io/redhat-helm-charts/
 
   destinations:
     - server: https://kubernetes.default.svc
@@ -19,6 +20,8 @@ spec:
       namespace: openshift-operators
     - server: https://kubernetes.default.svc
       namespace: vault
+    - server: https://kubernetes.default.svc
+      namespace: ibm-operator-catalog
 
   clusterResourceWhitelist:
     - group: ""
