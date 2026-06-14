@@ -8,4 +8,5 @@ data:
   policy.csv: |
     g, system:cluster-admins, role:admin
     g, cluster-admins, role:admin
+    g, kubeadmin, role:admin
   scopes: "[groups]"
