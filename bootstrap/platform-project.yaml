@@ -32,6 +32,8 @@ spec:
       kind: ClusterRoleBinding
     - group: datasciencecluster.opendatahub.io
       kind: DataScienceCluster
+    - group: operators.coreos.com
+      kind: CatalogSource
 
   namespaceResourceWhitelist:
     - group: "*"
