@@ -11,24 +11,24 @@ spec:
   components:
     dashboard:
       managementState: Managed
-    workbenches:
-      workbenchNamespace: rhods-notebooks
-      managementState: Managed
-    datasciencepipelines:
-      managementState: Managed
-    kueue:
-      managementState: Managed
-    ray:
-      managementState: Managed
-    codeflare:
-      managementState: Managed
-    modelmeshserving:
-      managementState: Managed
-    # kserve requires Knative Serving (OpenShift Serverless) — too heavy for local
     kserve:
+      managementState: Managed
+      # RawDeployment mode — no Knative/OpenShift Serverless required
+      serving:
+        managementState: Removed
+      rawDeploymentServiceConfig: Headless
+    modelmeshserving:
       managementState: Removed
-    # NIM requires GPU
-    # modelregistry, trainingoperator, trustyai: enable when needed
+    workbenches:
+      managementState: Removed
+    datasciencepipelines:
+      managementState: Removed
+    kueue:
+      managementState: Removed
+    ray:
+      managementState: Removed
+    codeflare:
+      managementState: Removed
     modelregistry:
       managementState: Removed
     trainingoperator:
