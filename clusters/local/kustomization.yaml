@@ -5,3 +5,4 @@ resources:
   - vault-app.yaml
   - eso-app.yaml
   - openshift-ai-app.yaml
+  - ibm-operator-catalog-app.yaml
