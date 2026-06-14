@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: git@github.com:balex42/openshift-local-gitops.git
     targetRevision: HEAD
-    path: apps/gitops-operator/overlays/local
+    path: apps/gitops-operator
   destination:
     server: https://kubernetes.default.svc
     namespace: openshift-gitops-operator

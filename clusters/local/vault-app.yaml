@@ -7,10 +7,16 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
-  source:
-    repoURL: git@github.com:balex42/openshift-local-gitops.git
-    targetRevision: HEAD
-    path: apps/vault/overlays/local
+  sources:
+    - repoURL: https://helm.releases.hashicorp.com
+      chart: vault
+      targetRevision: 0.29.1
+      helm:
+        valueFiles:
+          - $values/apps/vault/values.yaml
+    - repoURL: git@github.com:balex42/openshift-local-gitops.git
+      targetRevision: HEAD
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: vault
@@ -20,4 +26,3 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      - ServerSideApply=true
